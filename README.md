@@ -12,3 +12,9 @@ Deadline: 2019/12/9
 2. Build codes and test on SVHN.
 3. Hyperparameters tuning.
 4. Build the codes for WGAN.
+
+
+
+Resources for WGAN:
+
+[jiamings/wgan](https://github.com/Zeleni9/pytorch-wgan/blob/master/models/wgan_clipping.py)
