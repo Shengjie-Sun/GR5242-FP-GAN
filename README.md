@@ -17,4 +17,6 @@ Deadline: 2019/12/9
 
 Resources for WGAN:
 
+[Zeleni9/pytorch-wgan](https://github.com/Zeleni9/pytorch-wgan/blob/master/models/wgan_clipping.py)
+
 [jiamings/wgan](https://github.com/Zeleni9/pytorch-wgan/blob/master/models/wgan_clipping.py)
