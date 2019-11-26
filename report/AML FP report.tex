@@ -73,37 +73,61 @@
 \maketitle
 
 \begin{abstract}
-  We implement GAN and WGAN on MNIST and SVHN dataset. 
+  We implement GAN on MNIST and SVHN dataset.
+  The generated samples for both datasets are great although it takes quite some time to train the model.
+  To help the model converge faster, we implement WGAN as well.
+  The result \textbf{TBD}.
 \end{abstract}
 
 \section{Introduction}
 
+The core ideas of GAN
+
+Make sure to understand Figure 1 and Algorithm 1 of the paper.
+
+Also, why we want G to minimize and D to maximize V (G, D).
+
+\section{Implmentation on MNIST}
+
+\subsection{Architecture}
+
+Generator and discriminators and hyperparameters
+
+\subsection{Result}
+
+Training process in tensorboard
+
+the generated samples compared with training dataset and figure 2a in paper
+
+\section{Implmentation on SVHN}
+
+\subsection{Architecture}
+
+Generator and discriminators and hyperparameters
+
+\subsection{Result}
+
+Training process in tensorboard
+
+the generated samples compared with training dataset
+
+How is the quality compared to your GAN on MNIST? If the training does not go well, what failure modes do you see?
+
+\section{WGAN}
+
+The benefits of WGAN
+
+\subsection{WGAN on MNIST}
+
 xxx
 
-\subsection{GAN}
+\subsection{WGAN on SVHN}
 
-xxx
-
-\subsection{WGAN}
-
-\section{Implmentation}
-
-xxx
-
-\section{Result}
 xxx
 
 \section{Summary}
 
 xxx
-
-
-
-\subsubsection*{Acknowledgments}
-
-Use unnumbered third level headings for the acknowledgments. All acknowledgments
-go at the end of the paper. Do not include acknowledgments in the anonymized
-submission, only in the final paper.
 
 \section*{References}
 
