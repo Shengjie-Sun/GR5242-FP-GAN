@@ -13,7 +13,17 @@ Deadline: 2019/12/9
 3. Hyperparameters tuning.
 4. Build the codes for WGAN.
 
+#### Record
 
+(EPOCH, BATCH, SEED, LAMBDA, LEARNING_RATE_D, LEARNING_RATE_G)
+
+- WGAN-MNIST-20191126-011641
+
+  (50, 256, 100, 1.0, 1e-4, 1e-3)
+
+- WGAN-SVHN-20191126-032003
+
+  (50, 256, 100, 10.0, 1e-4, 1e-3)
 
 Resources for WGAN:
 
