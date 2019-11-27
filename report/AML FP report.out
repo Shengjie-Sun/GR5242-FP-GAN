@@ -1,11 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Implmentation on MNIST}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Architecture}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Result}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Implmentation on SVHN}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Architecture}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{Result}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{WGAN}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{WGAN on MNIST}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{WGAN on SVHN}{section.4}% 10
-\BOOKMARK [1][-]{section.5}{Summary}{}% 11
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Generator}{subsection.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Result}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Implmentation on SVHN}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Architecture}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Result}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{WGAN}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{WGAN on MNIST}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{WGAN on SVHN}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Summary}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Future steps}{section.5}% 13

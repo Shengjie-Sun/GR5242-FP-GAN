@@ -25,6 +25,8 @@
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
+\usepackage{graphicx}
+\usepackage{subfig}
 
 \title{Implementing GAN on MNIST and SVHN}
 
@@ -73,7 +75,7 @@
 \maketitle
 
 \begin{abstract}
-  We implement GAN on MNIST and SVHN dataset.
+  We implement DCGAN on MNIST and SVHN dataset.
   The generated samples for both datasets are great although it takes quite some time to train the model.
   To help the model converge faster, we implement WGAN as well.
   The result \textbf{TBD}.
@@ -81,23 +83,67 @@
 
 \section{Introduction}
 
-The core ideas of GAN
+Generative Adversarial Nets (GAN), first introduced by Ian Goodfellow in 2014[1], is a model that can be used to generate new images. 
+It has been a hot topic since then.
 
-Make sure to understand Figure 1 and Algorithm 1 of the paper.
+The core idea of GAN is to create a two-player game. 
+Build a generator that creates fake images while the discriminator tells whether the image is true or fake.
 
-Also, why we want G to minimize and D to maximize V (G, D).
+We train $D$ to maximize the probability of assigning the
+correct label to both training examples and samples from G. 
+We simultaneously train G to minimize $log(1-D(G(z)))$.
+
+The optimum case is that the generate can fully recover the distribution of the data and the discriminator cannot tell whether the image is fake or not i.e. the output of discriminator is $1/2$.
 
 \section{Implmentation on MNIST}
 
 \subsection{Architecture}
 
-Generator and discriminators and hyperparameters
+We used Deep Convoltional GAN (DCGAN)[2] as our structure.
+
+\subsubsection{Generator}
+
+\begin{itemize}
+  \item Input: $100 \times 1$ vector
+  \item First layer
+    \begin{itemize}
+      \item Dense
+      \item Output $7\times 7\times 256$
+      \item Batch normalization \checkmark
+      \item Activation: leaky relu
+    \end{itemize}
+  \item Second layer
+    \begin{itemize}
+      \item Conv2DTranspose
+      \item Filter: 128
+      \item Kernel size: 5
+      \item Stride: 1
+      \item Padding: same
+      \item Batch normalization \checkmark
+      \item Activation: leaky relu
+    \end{itemize}   
+\end{itemize}
 
 \subsection{Result}
 
 Training process in tensorboard
 
 the generated samples compared with training dataset and figure 2a in paper
+
+\begin{figure}[!htb]
+  \centering
+  \subfloat[MNIST data]{
+  \includegraphics[width=0.2\textwidth]{I3.png}}
+  \subfloat[Epoch 10/50]{
+  \includegraphics[width=0.2\textwidth]{I1.png}}
+  \subfloat[Epoch 30/50]{
+  \includegraphics[width=0.2\textwidth]{I2.png}}
+  \subfloat[Epoch 50/50]{
+  \includegraphics[width=0.2\textwidth]{I3.png}}
+  \caption{Comparison of MNIST data and generated samples from DCGAN}
+  \label{fig:DCGAN_MNIST}
+\end{figure}
+
 
 \section{Implmentation on SVHN}
 
@@ -129,28 +175,14 @@ xxx
 
 xxx
 
+\subsection{Future steps}
+
+Self-attention neural network.
+
 \section*{References}
 
-References follow the acknowledgments. Use unnumbered first-level heading for
-the references. Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to \verb+small+ (9 point)
-when listing the references. {\bf Remember that you can use more than eight
-  pages as long as the additional pages contain \emph{only} cited references.}
-\medskip
+[1] Goodfellow, Ian, et al. "Generative adversarial nets." Advances in neural information processing systems. 2014.
 
-\small
-
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms for
-connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and T.K.\ Leen
-(eds.), {\it Advances in Neural Information Processing Systems 7},
-pp.\ 609--616. Cambridge, MA: MIT Press.
-
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS: Exploring
-  Realistic Neural Models with the GEneral NEural SImulation System.}  New York:
-TELOS/Springer--Verlag.
-
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of learning and
-recall at excitatory recurrent synapses and cholinergic modulation in rat
-hippocampal region CA3. {\it Journal of Neuroscience} {\bf 15}(7):5249-5262.
+[2] Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
 
 \end{document}
