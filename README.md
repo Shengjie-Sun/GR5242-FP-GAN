@@ -4,6 +4,16 @@
 
 Start: 2019/11/23
 
+Run tutorials provided on [official website](https://www.tensorflow.org/tutorials/generative/dcgan,) on MNIST: 2019/11/23
+
+Code for GAN on MNIST: 2019/11/23
+
+Code for GAN on SVHN: 2019/11/24
+
+Code for WGAN on MNIST&SVHN: 2019/11/25
+
+Train models on Colab: 2019/11/26
+
 Deadline: 2019/12/9
 
 #### Steps
@@ -15,18 +25,11 @@ Deadline: 2019/12/9
 
 #### Record
 
-(EPOCH, BATCH, SEED, LAMBDA, LEARNING_RATE_D, LEARNING_RATE_G)
+| config                     | epoch | batch | lambda | lr_d | LR_G |
+| -------------------------- | ----- | ----- | ------ | ---- | ---- |
+| WGAN-MNIST-20191126-011641 | 50    | 256   | 1.0    | 1e-4 | 1e-3 |
+| WGAN-SVHN-20191126-032003  | 50    | 256   | 10.0   | 1e-4 | 1e-3 |
+| GAN-SVHN-20191126-161914   | 200   | 256   |        | 1e-4 | 1e-3 |
+| GAN-MNIST-20191127-013034  | 100   | 256   |        | 1e-4 | 1e-3 |
 
-- WGAN-MNIST-20191126-011641
 
-  (50, 256, 100, 1.0, 1e-4, 1e-3)
-
-- WGAN-SVHN-20191126-032003
-
-  (50, 256, 100, 10.0, 1e-4, 1e-3)
-
-Resources for WGAN:
-
-[Zeleni9/pytorch-wgan](https://github.com/Zeleni9/pytorch-wgan/blob/master/models/wgan_clipping.py)
-
-[jiamings/wgan](https://github.com/Zeleni9/pytorch-wgan/blob/master/models/wgan_clipping.py)
