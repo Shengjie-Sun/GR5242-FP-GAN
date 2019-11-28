@@ -104,36 +104,100 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
 \subsubsection{Generator}
 
 \begin{itemize}
-  \item Input: $100 \times 1$ vector
-  \item First layer
+  \item First layer: Dense
     \begin{itemize}
-      \item Dense
+      \item Input: $100 \times 1$ vector
       \item Output $7\times 7\times 256$
-      \item Batch normalization \checkmark
+      \item Batch normalization
       \item Activation: leaky relu
     \end{itemize}
-  \item Second layer
+  \item Second layer: Conv2DTranspose
     \begin{itemize}
-      \item Conv2DTranspose
       \item Filter: 128
       \item Kernel size: 5
       \item Stride: 1
       \item Padding: same
-      \item Batch normalization \checkmark
+      \item Batch normalization
+      \item Activation: leaky relu
+  \end{itemize} 
+  \item Third layer: Conv2DTranspose
+    \begin{itemize}
+      \item Filter: 64
+      \item Kernel size: 5
+      \item Stride: 2
+      \item Padding: same
+      \item Batch normalization
       \item Activation: leaky relu
     \end{itemize}   
+  \item Fourth layer: Conv2DTranspose
+    \begin{itemize}
+      \item Filter: 1
+      \item Kernel size: 5
+      \item Stride: 2
+      \item Padding: same
+      \item Activation: tanh
+    \end{itemize}   
+\end{itemize}
+
+\subsubsection{Discriminator}
+
+\begin{itemize}
+  \item First layer: Conv2D
+    \begin{itemize}
+      \item Input: $28 \times 28\times 1$ array
+      \item Filter: 64
+      \item Kernel size: 5
+      \item Stride: 2
+      \item Padding: same
+      \item Activation: leaky relu
+      \item Dropout: 0.3
+  \end{itemize} 
+  \item Third layer: Conv2D
+    \begin{itemize}
+      \item Filter: 128
+      \item Kernel size: 5
+      \item Stride: 2
+      \item Padding: same
+      \item Activation: leaky relu
+      \item Dropout: 0.3
+    \end{itemize}   
+  \item Fourth layer: Conv2D
+    \begin{itemize}
+      \item Filter: 256
+      \item Kernel size: 5
+      \item Stride: 2
+      \item Padding: same
+      \item Activation: leaky relu
+      \item Dropout: 0.3
+    \end{itemize} 
+  \item Fifth layer: Flatten
+  \item Sixth layer: Dense with output 1
+\end{itemize}
+
+\subsubsection{Hyperparameters}
+
+\begin{itemize}
+  \item Epoch: 
+  \item Batch: 
+  \item Learning rate
+    \begin{itemize}
+      \item Generator: 1e-3
+      \item Discriminator: 1e-4
+    \end{itemize}
 \end{itemize}
 
 \subsection{Result}
 
 Training process in tensorboard
 
+
+
 the generated samples compared with training dataset and figure 2a in paper
 
 \begin{figure}[!htb]
   \centering
   \subfloat[MNIST data]{
-  \includegraphics[width=0.2\textwidth]{I3.png}}
+  \includegraphics[width=0.2\textwidth]{mnist_data.png}}
   \subfloat[Epoch 10/50]{
   \includegraphics[width=0.2\textwidth]{I1.png}}
   \subfloat[Epoch 30/50]{
@@ -144,12 +208,27 @@ the generated samples compared with training dataset and figure 2a in paper
   \label{fig:DCGAN_MNIST}
 \end{figure}
 
+From Figure ~\ref{fig:DCGAN_MNIST}, 
+we can see the generated samples has a good approximation after 30 epoches.
+
+The samples from 10th are quite blury and they cannot have a good representation of number 2, 5, 8, etc.
+
+The latter samples are clearer and the edges of the numbers are smoother. Number 0, 1, 3, 5, 7, 9 are quite ideal.
 
 \section{Implmentation on SVHN}
 
 \subsection{Architecture}
 
-Generator and discriminators and hyperparameters
+\subsubsection{Generator}
+
+The generator is slightly modifed from the generator for MNIST. 
+The output of the first dense layer is changed to $8\times 8\times 256$ 
+and the filter of the fourth layer (Conv2DTranspose) has changed from 1 to 3
+so that the output of the whole generator would be a $32\times 32\times 3$ image.
+
+\subsubsection{Discriminator}
+
+Discriminator is exactly the same as the previous one.
 
 \subsection{Result}
 
@@ -157,11 +236,26 @@ Training process in tensorboard
 
 the generated samples compared with training dataset
 
+\begin{figure}[!htb]
+  \centering
+  \subfloat[SVHN data]{
+  \includegraphics[width=0.2\textwidth]{svhn_data.png}}
+  \subfloat[Epoch 10/50]{
+  \includegraphics[width=0.2\textwidth]{I1.png}}
+  \subfloat[Epoch 30/50]{
+  \includegraphics[width=0.2\textwidth]{I2.png}}
+  \subfloat[Epoch 50/50]{
+  \includegraphics[width=0.2\textwidth]{I3.png}}
+  \caption{Comparison of MNIST data and generated samples from DCGAN}
+  \label{fig:DCGAN_SVHN}
+\end{figure}
+
 How is the quality compared to your GAN on MNIST? If the training does not go well, what failure modes do you see?
 
 \section{WGAN}
 
-The benefits of WGAN
+Wasserstein GAN is a modified GAN introduced by Arjovsky, Martin, et al.(2017)[3]. 
+It proposed Wasserstein that has a better property than Jensen-Shannon divergence.
 
 \subsection{WGAN on MNIST}
 
@@ -184,5 +278,7 @@ Self-attention neural network.
 [1] Goodfellow, Ian, et al. "Generative adversarial nets." Advances in neural information processing systems. 2014.
 
 [2] Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
+
+[3] Arjovsky, Martin, Soumith Chintala, and Léon Bottou. "Wasserstein gan." arXiv preprint arXiv:1701.07875 (2017).
 
 \end{document}
