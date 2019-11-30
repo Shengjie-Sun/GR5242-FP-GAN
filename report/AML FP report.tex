@@ -186,11 +186,25 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
     \end{itemize}
 \end{itemize}
 
+We have experimented on different bacthes and epoches and we believe a batch of 128 samples and 50 epoches already produced satisfying result. 
+The quality of the image does not seem to have significant improve after 50 epoches.
+
+The reason why we choose the learning rate for the discriminator 10 times smaller than the learning rate for generator is 
+because we noticed the loss of discriminator is much smaller than the loss of generator. 
+To avoid the gradient jumping back and forth around the optimum spot, we lower the learning rate for discriminator.
+The training result shows that the loss for both of them are at the same magnitude after the modification.
+
 \subsection{Result}
 
 Training process in tensorboard
 
-
+\begin{figure}[!htb]
+  \centering
+  \subfloat[MNIST data]{
+  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-MNIST.png}}
+  \caption{Tensorboard GAN MNSIT}
+  \label{fig:TB_GAN_MNSIT}
+\end{figure}
 
 the generated samples compared with training dataset and figure 2a in paper
 
@@ -211,7 +225,7 @@ the generated samples compared with training dataset and figure 2a in paper
 From Figure ~\ref{fig:DCGAN_MNIST}, 
 we can see the generated samples has a good approximation after 30 epoches.
 
-The samples from 10th are quite blury and they cannot have a good representation of number 2, 5, 8, etc.
+The samples from the 10th are quite blury and they cannot have a good representation of number 2, 5, 8, etc.
 
 The latter samples are clearer and the edges of the numbers are smoother. Number 0, 1, 3, 5, 7, 9 are quite ideal.
 
@@ -230,9 +244,29 @@ so that the output of the whole generator would be a $32\times 32\times 3$ image
 
 Discriminator is exactly the same as the previous one.
 
+\subsubsection{Hyperparameters}
+
+\begin{itemize}
+  \item Epoch: 
+  \item Batch: 
+  \item Learning rate
+    \begin{itemize}
+      \item Generator: 1e-3
+      \item Discriminator: 1e-4
+    \end{itemize}
+\end{itemize}
+
 \subsection{Result}
 
 Training process in tensorboard
+
+\begin{figure}[!htb]
+  \centering
+  \subfloat[MNIST data]{
+  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-SVHN.png}}
+  \caption{Tensorboard GAN SVHN}
+  \label{fig:TB_GAN_SVHN}
+\end{figure}
 
 the generated samples compared with training dataset
 
@@ -240,17 +274,20 @@ the generated samples compared with training dataset
   \centering
   \subfloat[SVHN data]{
   \includegraphics[width=0.2\textwidth]{svhn_data.png}}
-  \subfloat[Epoch 10/50]{
-  \includegraphics[width=0.2\textwidth]{I1.png}}
-  \subfloat[Epoch 30/50]{
-  \includegraphics[width=0.2\textwidth]{I2.png}}
-  \subfloat[Epoch 50/50]{
-  \includegraphics[width=0.2\textwidth]{I3.png}}
-  \caption{Comparison of MNIST data and generated samples from DCGAN}
+  \subfloat[Epoch xx/xx]{
+  \includegraphics[width=0.2\textwidth]{s1_after-103-batches.png}}
+  \subfloat[Epoch xx/xx]{
+  \includegraphics[width=0.2\textwidth]{s2_after-514-batches.png}}
+  \subfloat[Epoch xx/xx]{
+  \includegraphics[width=0.2\textwidth]{s3_after-590-batches.png}}
+  \caption{Comparison of SVHN data and generated samples from DCGAN}
   \label{fig:DCGAN_SVHN}
 \end{figure}
 
-How is the quality compared to your GAN on MNIST? If the training does not go well, what failure modes do you see?
+The quality of the generated samples are not as good as the MNIST samples since the SVHN dataset is more complicated.
+This complexity makes the model harder to converge i.e. uses more epoches to get good generated samples.
+
+Although complicated as the dataset is, the generated samples demonstrate some qualities such as the variety of the samples. There are different combinations of gree, white, and red background with white, blue, and red fonts.
 
 \section{WGAN}
 
@@ -259,11 +296,23 @@ It proposed Wasserstein that has a better property than Jensen-Shannon divergenc
 
 \subsection{WGAN on MNIST}
 
-xxx
+\begin{figure}[!htb]
+  \centering
+  \subfloat[MNIST data]{
+  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-MNIST.png}}
+  \caption{Tensorboard WGAN MNSIT}
+  \label{fig:TB_GAN_MNSIT}
+\end{figure}
 
 \subsection{WGAN on SVHN}
 
-xxx
+\begin{figure}[!htb]
+  \centering
+  \subfloat[SVHN data]{
+  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-SVHN.png}}
+  \caption{Tensorboard WGAN SVHN}
+  \label{fig:TB_WGAN_SVHN}
+\end{figure}
 
 \section{Summary}
 
@@ -271,7 +320,7 @@ xxx
 
 \subsection{Future steps}
 
-Self-attention neural network.
+Since plenty new models have been published other than WGAN, we can try other models such as triple-GAN, Self-attention neural network, etc..
 
 \section*{References}
 
