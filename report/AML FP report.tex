@@ -27,6 +27,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{graphicx}
 \usepackage{subfig}
+\usepackage{algpseudocode,algorithm}
 
 \title{Implementing GAN on MNIST and SVHN}
 
@@ -95,7 +96,7 @@ We simultaneously train G to minimize $log(1-D(G(z)))$.
 
 The optimum case is that the generate can fully recover the distribution of the data and the discriminator cannot tell whether the image is fake or not i.e. the output of discriminator is $1/2$.
 
-\section{Implmentation on MNIST}
+\section{Implementation on MNIST}
 
 \subsection{Architecture}
 
@@ -103,16 +104,28 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
 
 \subsubsection{Generator}
 
+The input of the first dense layer the $100\times 1$ random noise vector. 
+We have $12,544$ neurons, apply batch normalization and activation function Leaky Relu, and reshape it to $7\times 7\times 256$.
+
+The second Convoltional Transpose layer outputs $7\times 7\times 128$.
+
+The third and fourth Convolutional layers have stride 2 and padding \textit{same}, they alter the first two dimensions of the input and make the input from $7\times 7$ to $14\times 14$ to $28\times 28$.
+The filter makes the third dimension from 128 to 64 to 1.
+
+Thus the final output is a $28\times 28\times 1$ black and white image.
+
 \begin{itemize}
   \item First layer: Dense
     \begin{itemize}
       \item Input: $100 \times 1$ vector
-      \item Output $7\times 7\times 256$
+      \item Units: $12,544$
       \item Batch normalization
       \item Activation: leaky relu
+      \item Reshape $12,544$ to $7\times 7\times 256$
     \end{itemize}
   \item Second layer: Conv2DTranspose
     \begin{itemize}
+      \item Input $7\times 7\times 256$
       \item Filter: 128
       \item Kernel size: 5
       \item Stride: 1
@@ -122,6 +135,7 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
   \end{itemize} 
   \item Third layer: Conv2DTranspose
     \begin{itemize}
+      \item Input $7\times 7\times 128$
       \item Filter: 64
       \item Kernel size: 5
       \item Stride: 2
@@ -131,15 +145,20 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
     \end{itemize}   
   \item Fourth layer: Conv2DTranspose
     \begin{itemize}
+      \item Input $14\times 14\times 64$
       \item Filter: 1
       \item Kernel size: 5
       \item Stride: 2
       \item Padding: same
       \item Activation: tanh
+      \item Output $28\times 28\times 1$
     \end{itemize}   
 \end{itemize}
 
 \subsubsection{Discriminator}
+
+The discriminator takes in a $28\times 28\times 1$ array. After three convolutional layers and one dense layer, the output will be a scalar.
+This scalar will be applied to a logistics function in future steps to be a probability that lies between 0 and 1. It is the probability of the input being a true image or a fake image.
 
 \begin{itemize}
   \item First layer: Conv2D
@@ -177,8 +196,8 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
 \subsubsection{Hyperparameters}
 
 \begin{itemize}
-  \item Epoch: 
-  \item Batch: 
+  \item Epoch: 100
+  \item Batch: 256
   \item Learning rate
     \begin{itemize}
       \item Generator: 1e-3
@@ -186,8 +205,8 @@ We used Deep Convoltional GAN (DCGAN)[2] as our structure.
     \end{itemize}
 \end{itemize}
 
-We have experimented on different bacthes and epoches and we believe a batch of 128 samples and 50 epoches already produced satisfying result. 
-The quality of the image does not seem to have significant improve after 50 epoches.
+We have experimented on different bacthes and epoches and we believe a batch of 256 samples and 100 epoches already produced satisfying result. 
+In fact, the quality of the image does not seem to have significant improve after 50 epoches.
 
 The reason why we choose the learning rate for the discriminator 10 times smaller than the learning rate for generator is 
 because we noticed the loss of discriminator is much smaller than the loss of generator. 
@@ -196,28 +215,27 @@ The training result shows that the loss for both of them are at the same magnitu
 
 \subsection{Result}
 
-Training process in tensorboard
+\subsubsection{Tensorboard}
 
 \begin{figure}[!htb]
   \centering
-  \subfloat[MNIST data]{
-  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-MNIST.png}}
+  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-MNIST.png}
   \caption{Tensorboard GAN MNSIT}
   \label{fig:TB_GAN_MNSIT}
 \end{figure}
 
-the generated samples compared with training dataset and figure 2a in paper
+\subsubsection{Generated samples}
 
 \begin{figure}[!htb]
   \centering
   \subfloat[MNIST data]{
   \includegraphics[width=0.2\textwidth]{mnist_data.png}}
-  \subfloat[Epoch 10/50]{
+  \subfloat[Epoch 10/100]{
   \includegraphics[width=0.2\textwidth]{I1.png}}
-  \subfloat[Epoch 30/50]{
+  \subfloat[Epoch 30/100]{
   \includegraphics[width=0.2\textwidth]{I2.png}}
-  \subfloat[Epoch 50/50]{
-  \includegraphics[width=0.2\textwidth]{I3.png}}
+  \subfloat[Epoch 100/100]{
+  \includegraphics[width=0.2\textwidth]{I4_after-296-batches.png}}
   \caption{Comparison of MNIST data and generated samples from DCGAN}
   \label{fig:DCGAN_MNIST}
 \end{figure}
@@ -229,7 +247,9 @@ The samples from the 10th are quite blury and they cannot have a good representa
 
 The latter samples are clearer and the edges of the numbers are smoother. Number 0, 1, 3, 5, 7, 9 are quite ideal.
 
-\section{Implmentation on SVHN}
+Although not all samples are of high quality, there are a proportion of the images that have the quality of the samples presented in paper[1] 2(a).
+
+\section{Implementation on SVHN}
 
 \subsection{Architecture}
 
@@ -247,8 +267,8 @@ Discriminator is exactly the same as the previous one.
 \subsubsection{Hyperparameters}
 
 \begin{itemize}
-  \item Epoch: 
-  \item Batch: 
+  \item Epoch: 200
+  \item Batch: 256
   \item Learning rate
     \begin{itemize}
       \item Generator: 1e-3
@@ -256,29 +276,30 @@ Discriminator is exactly the same as the previous one.
     \end{itemize}
 \end{itemize}
 
+Since the SVHN dataset is more complicated, we train the model with 200 epoches.
+
 \subsection{Result}
 
-Training process in tensorboard
+\subsubsection{Tensorboard}
 
 \begin{figure}[!htb]
   \centering
-  \subfloat[MNIST data]{
-  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-SVHN.png}}
+  \includegraphics[width=0.8\textwidth]{tensorboard-GAN-SVHN.png}
   \caption{Tensorboard GAN SVHN}
   \label{fig:TB_GAN_SVHN}
 \end{figure}
 
-the generated samples compared with training dataset
+\subsubsection{Generated samples}
 
 \begin{figure}[!htb]
   \centering
   \subfloat[SVHN data]{
   \includegraphics[width=0.2\textwidth]{svhn_data.png}}
-  \subfloat[Epoch xx/xx]{
+  \subfloat[Epoch 30/200]{
   \includegraphics[width=0.2\textwidth]{s1_after-103-batches.png}}
-  \subfloat[Epoch xx/xx]{
+  \subfloat[Epoch 150/200]{
   \includegraphics[width=0.2\textwidth]{s2_after-514-batches.png}}
-  \subfloat[Epoch xx/xx]{
+  \subfloat[Epoch 200/200]{
   \includegraphics[width=0.2\textwidth]{s3_after-590-batches.png}}
   \caption{Comparison of SVHN data and generated samples from DCGAN}
   \label{fig:DCGAN_SVHN}
@@ -294,12 +315,14 @@ Although complicated as the dataset is, the generated samples demonstrate some q
 Wasserstein GAN is a modified GAN introduced by Arjovsky, Martin, et al.(2017)[3]. 
 It proposed Wasserstein that has a better property than Jensen-Shannon divergence.
 
+Down to the implementation, the main difference is the loss function. We modified the loss function from \textit{BinaryCrossentropy} to a customized loss function.
+
+
 \subsection{WGAN on MNIST}
 
 \begin{figure}[!htb]
   \centering
-  \subfloat[MNIST data]{
-  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-MNIST.png}}
+  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-MNIST.png}
   \caption{Tensorboard WGAN MNSIT}
   \label{fig:TB_GAN_MNSIT}
 \end{figure}
@@ -308,8 +331,7 @@ It proposed Wasserstein that has a better property than Jensen-Shannon divergenc
 
 \begin{figure}[!htb]
   \centering
-  \subfloat[SVHN data]{
-  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-SVHN.png}}
+  \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-SVHN.png}
   \caption{Tensorboard WGAN SVHN}
   \label{fig:TB_WGAN_SVHN}
 \end{figure}
