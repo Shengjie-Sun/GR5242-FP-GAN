@@ -317,6 +317,9 @@ It proposed Wasserstein that has a better property than Jensen-Shannon divergenc
 
 Down to the implementation, the main difference is the loss function. We modified the loss function from \textit{BinaryCrossentropy} to a customized loss function.
 
+The generator and discriminator are exactly the same as the GAN.
+
+The hyperparameters are the same except this time we only train 50 epoches for each model.
 
 \subsection{WGAN on MNIST}
 
@@ -327,6 +330,19 @@ Down to the implementation, the main difference is the loss function. We modifie
   \label{fig:TB_GAN_MNSIT}
 \end{figure}
 
+\begin{figure}[!htb]
+  \centering
+  \subfloat[MNIST data]{
+  \includegraphics[width=0.2\textwidth]{mnist_data.png}}
+  \subfloat[Epoch 10/50]{
+  \includegraphics[width=0.2\textwidth]{I5_after-31-batches.png}}
+  \subfloat[Epoch 30/50]{
+  \includegraphics[width=0.2\textwidth]{I6_after-101-batches.png}}
+  \subfloat[Epoch 50/50]{
+  \includegraphics[width=0.2\textwidth]{I7_after-149-batches.png}}
+  \caption{Comparison of MNIST data and generated samples from WGAN}
+\end{figure}
+
 \subsection{WGAN on SVHN}
 
 \begin{figure}[!htb]
@@ -334,6 +350,19 @@ Down to the implementation, the main difference is the loss function. We modifie
   \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-SVHN.png}
   \caption{Tensorboard WGAN SVHN}
   \label{fig:TB_WGAN_SVHN}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \subfloat[SVHN data]{
+  \includegraphics[width=0.2\textwidth]{svhn_data.png}}
+  \subfloat[Epoch 10/50]{
+  \includegraphics[width=0.2\textwidth]{s4_after-30-batches.png}}
+  \subfloat[Epoch 30/50]{
+  \includegraphics[width=0.2\textwidth]{s5_after-102-batches.png}}
+  \subfloat[Epoch 50/50]{
+  \includegraphics[width=0.2\textwidth]{s6_after-142-batches.png}}
+  \caption{Comparison of SVHN data and generated samples from WGAN}
 \end{figure}
 
 \section{Summary}
