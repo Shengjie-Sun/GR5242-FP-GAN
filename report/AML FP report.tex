@@ -98,9 +98,17 @@ The optimum case is that the generate can fully recover the distribution of the 
 
 \section{Implementation on MNIST}
 
+MNIST dataset is a dataset of handwritten images, including 60,000 training images and 10,000 testing images.
+All digits have been size-normalized and centered in a $28\times 28$ fixed-size image[2].
+
+The dataset has been generally used to conduct pattern recognition. 
+In this project, however, we will use the training image to train our GAN model and generate similar images.
+
 \subsection{Architecture}
 
-We used Deep Convoltional GAN (DCGAN)[2] as our structure.
+We used Deep Convoltional GAN (DCGAN)[4] as our structure. 
+It has plenty convolutional layers and does not have max pooling layer.
+We mainly use transpose convolutional layer to perform upsampling in our model.
 
 \subsubsection{Generator}
 
@@ -224,6 +232,11 @@ The training result shows that the loss for both of them are at the same magnitu
   \label{fig:TB_GAN_MNSIT}
 \end{figure}
 
+As we can observe from Figure~\ref{fig:TB_GAN_MNSIT}, training loss of both generator and discriminator is fluctuating. 
+And generally when the loss of generator decreases, the loss of discriminator increases. This is the representation of the two player game i.e. both players want to minimize their own loss.
+
+Although the loss remains around the same level and does not continue decrease, the quality of the images are in fact improving as we can see in the following section.
+
 \subsubsection{Generated samples}
 
 \begin{figure}[!htb]
@@ -250,6 +263,11 @@ The latter samples are clearer and the edges of the numbers are smoother. Number
 Although not all samples are of high quality, there are a proportion of the images that have the quality of the samples presented in paper[1] 2(a).
 
 \section{Implementation on SVHN}
+
+SVHN dataset is a dataset similar to MNIST, containing real-world digit images that obtained from house numbers in Google Street View images.
+The images have been cropped into $32\times 32$ fixed-size array with three channels.
+
+In this project, we will again use the training image to train our GAN model and generate similar images.
 
 \subsection{Architecture}
 
@@ -312,7 +330,7 @@ Although complicated as the dataset is, the generated samples demonstrate some q
 
 \section{WGAN}
 
-Wasserstein GAN is a modified GAN introduced by Arjovsky, Martin, et al.(2017)[3]. 
+Wasserstein GAN is a modified GAN introduced by Arjovsky, Martin, et al.(2017)[5]. 
 It proposed Wasserstein that has a better property than Jensen-Shannon divergence.
 
 Down to the implementation, the main difference is the loss function. We modified the loss function from \textit{BinaryCrossentropy} to a customized loss function.
@@ -327,7 +345,7 @@ The hyperparameters are the same except this time we only train 50 epoches for e
   \centering
   \includegraphics[width=0.8\textwidth]{tensorboard-WGAN-MNIST.png}
   \caption{Tensorboard WGAN MNSIT}
-  \label{fig:TB_GAN_MNSIT}
+  \label{fig:TB_WGAN_MNSIT}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -373,12 +391,17 @@ xxx
 
 Since plenty new models have been published other than WGAN, we can try other models such as triple-GAN, Self-attention neural network, etc..
 
+\clearpage
 \section*{References}
 
 [1] Goodfellow, Ian, et al. "Generative adversarial nets." Advances in neural information processing systems. 2014.
 
-[2] Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
+[2] LeCun, Yann, et al. “THE MNIST DATABASE.” MNIST Handwritten Digit Database, http://yann.lecun.com/exdb/mnist/.
 
-[3] Arjovsky, Martin, Soumith Chintala, and Léon Bottou. "Wasserstein gan." arXiv preprint arXiv:1701.07875 (2017).
+[3] Netzer, Yuval, et al. "Reading digits in natural images with unsupervised feature learning." (2011).
+
+[4] Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
+
+[5] Arjovsky, Martin, Soumith Chintala, and Léon Bottou. "Wasserstein gan." arXiv preprint arXiv:1701.07875 (2017).
 
 \end{document}
