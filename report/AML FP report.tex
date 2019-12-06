@@ -239,7 +239,7 @@ The training result shows that the loss for both of them are at the same magnitu
   \label{fig:TB_GAN_MNSIT}
 \end{figure}
 
-As we can observe from Figure~\ref{fig:TB_GAN_MNSIT}, training loss of both generator and discriminator is fluctuating. 
+As we can observe from Figure $\ref{fig:TB_GAN_MNSIT}$, training loss of both generator and discriminator is fluctuating. 
 And generally when the loss of generator decreases, the loss of discriminator increases. This is the representation of the two player game i.e. both players want to minimize their own loss.
 
 Although the loss remains around the same level and does not continue decrease, the quality of the images are in fact improving as we can see in the following section.
@@ -316,6 +316,8 @@ Since the SVHN dataset is more complicated, we train the model with 200 epoches.
   \caption{Tensorboard GAN SVHN}
   \label{fig:TB_GAN_SVHN}
 \end{figure}
+
+The training loss is fluctuating as well. We can see from Figure ~\ref{fig:TB_GAN_SVHN} that the training loss of the discriminator keeps increasing after 150 steps (50 epoches). This implies that the generator can generate the samples so well that the discriminator can hardly distinguish the true and fake image.
 
 \subsubsection{Generated samples}
 

@@ -90,6 +90,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/algorithms/algorithm.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/algorithms/algorithm.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/multicol.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/multicol.sty
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/AML FP report.aux
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/AML FP report.aux
 OUTPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/AML FP report.aux
@@ -155,10 +157,10 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-MNIST.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-MNIST.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-MNIST.png
@@ -174,23 +176,23 @@ INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/I2.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/I4_after-296-batches.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/I4_after-296-batches.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/I4_after-296-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-GAN-SVHN.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/svhn_data.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s1_after-103-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s2_after-514-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
-INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/s3_after-590-batches.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-WGAN-MNIST.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-WGAN-MNIST.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/tensorboard-WGAN-MNIST.png
