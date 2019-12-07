@@ -280,7 +280,7 @@ a) some digits such as 5 and 8 have some redundant white marks around the edges.
 
 b) some digits such as 4, 1, 8 is easier to be generated while 2 and 3 is harder to be generated. This conclusion is drawn from the fact that we go through more images to find a good sample of 2 and 3. But it might be because the some digits take up more feaible space of the input noise. We cannot know for sure.
 
-c) Digit 9 tends to transform to other 
+c) Digit 9 tends to transform to other digits. For example, the 1st 9 looks a little like 7 and the 4th 9 looks a little like 8.
 
 Although not all samples are of high quality, there are a proportion of the images that have the quality of the samples presented in paper[1] 2(a).
 
@@ -421,7 +421,7 @@ In short, we have studied the generative adversarial nets, especially the DCGAN 
 
 Throughout the project, we have only tuned a few hyperparameters such as learning rate and batches. There are other hyperparameters can be tuned. In the next step, we would tune the dimension of the noise, the structure of the model, etc.
 
-Since plenty new models have been published other than WGAN, in the future, we can try other models such as triple-GAN, Self-attention neural network, etc..
+Since plenty new models have been published other than WGAN, in the future, we can try other models such as triple-GAN[6], Self-attention neural networkn[7], LOGAN[8] etc.
 
 \section*{References}
 
@@ -434,5 +434,11 @@ Since plenty new models have been published other than WGAN, in the future, we c
 [4] Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).
 
 [5] Arjovsky, Martin, Soumith Chintala, and Léon Bottou. "Wasserstein gan." arXiv preprint arXiv:1701.07875 (2017).
+
+[6] Chongxuan, L. I., et al. "Triple generative adversarial nets." Advances in neural information processing systems. 2017.
+
+[7] Zhang, Han, et al. "Self-attention generative adversarial networks." arXiv preprint arXiv:1805.08318 (2018).
+
+[8] Wu, Yan, et al. "LOGAN: Latent Optimisation for Generative Adversarial Networks." arXiv preprint arXiv:1912.00953 (2019).
 
 \end{document}
