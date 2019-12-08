@@ -12,9 +12,6 @@ Code for GAN on SVHN: 2019/11/24
 
 Code for WGAN on MNIST&SVHN: 2019/11/25
 
-Train models on Colab: 2019/11/26-2019/12/05
-
-Write the report: 2019/12/07
 
 Deadline: 2019/12/9
 
