@@ -380,7 +380,7 @@ In order to use Wasserstein distance, 1-Lipschitz function are required and for 
 \end{figure}
 
 \subsection{WGAN on MNIST}
-As of the samples shown in Figure \ref{fig_MNIST}, there is no significant difference between the two models. Both qualities are satisfying. The MNIST is my simple actually, even the most naive GANs can get a good performance with some tuning of parameters. So, at least for me, DCGAN would be my first choice. 
+As of the samples shown in Figure \ref{fig_MNIST}, there is no significant difference between the two models. Both qualities are satisfying. The MNIST is so simple that even the most naive GANs can get a good performance with some tuning of parameters. So, at least for me, DCGAN would be my first choice. 
 
 The Figure \ref{fig_GANs_MNIST} shows that the comparison of DCGAN and WGAN on MNIST. Both are trained for 50 epochs. For the implementation purpose, the original WGAN use weight clipping and a better version is to add gradient penalty. In order to calculate that penalty, a sampling process is required and thus in generally speaking, WGAN will sacrifice some efficiency. 
 
@@ -425,8 +425,6 @@ Throughout the project, we have only tuned a few hyperparameters such as learnin
 
 Since plenty new models have been published other than WGAN, in the future, we can try other models such as triple-GAN[6], self-attention neural networkn[7], LOGAN[8] etc.
 
-
-\newpage
 \section*{References}
 
 [1] Goodfellow, Ian, et al. "Generative adversarial nets." Advances in neural information processing systems. 2014.
