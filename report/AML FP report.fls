@@ -183,6 +183,9 @@ INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/I4_after-296-batches.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/MNIST_digits.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/MNIST_digits.png
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/MNIST_digits.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/Fashion_MNIST_digits.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/Fashion_MNIST_digits.png
+INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/Fashion_MNIST_digits.png
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /Users/zeyu/Documents/GR5242-FP-GAN/report/imgs/tensorboard-GAN-SVHN.png
